@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      color: white;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      top: 30%;
+      transform: translateY(-50%);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    #yesBtn {
+      background-color: #00ff88;
+      color: black;
+    }
+
+    #noBtn {
+      background-color: #ff4d4d;
+      color: white;
+      position: absolute;
+    }
+
+    #message {
+      display: none;
+      font-size: 2rem;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Will you be my girlfriend? ❤️</h1>
+
+  <button id="yesBtn" class="btn">Yes 😍</button>
+  <button id="noBtn" class="btn">No 😢</button>
+
+  <div id="message">You just made me the happiest person alive ❤️</div>
+</div>
+
+<script>
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const message = document.getElementById("message");
+
+  // Move "No" button when hovered
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  });
+
+  // When she clicks YES
+  yesBtn.addEventListener("click", () => {
+    document.querySelector(".container").innerHTML = `
+      <h1>She said YES ❤️😭</h1>
+      <p style="font-size:20px;">This is the beginning of something beautiful.</p>
+    `;
+
+    // Confetti effect (simple)
+    for (let i = 0; i < 50; i++) {
+      let confetti = document.createElement("div");
+      confetti.style.position = "absolute";
+      confetti.style.width = "10px";
+      confetti.style.height = "10px";
+      confetti.style.backgroundColor = "white";
+      confetti.style.top = Math.random() * window.innerHeight + "px";
+      confetti.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(confetti);
+    }
+  });
+</script>
+
+</body>
+</html>
